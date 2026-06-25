@@ -1,0 +1,20 @@
+# Claude Code: 로컬 전용 (머신별, 공유 금지)
+.claude/settings.local.json
+.claude/**/*.local.*
+
+# 공유 설정/에이전트는 추적함:
+#   .claude/settings.json, .claude/agents/*.md, CLAUDE.md
+
+# 에디터 개인 설정
+.idea/
+.vscode/
+
+# 로그 / 임시 / 크래시 덤프
+*.log
+*.stackdump
+.tmp/
+tmp/
+
+# OS 잡파일
+.DS_Store
+Thumbs.db
