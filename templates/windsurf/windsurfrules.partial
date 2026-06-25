@@ -1,0 +1,23 @@
+<!-- agent-model-optimizer:start -->
+
+## Model routing
+
+Route work by task complexity. Match your model selection in Windsurf to these tiers:
+
+| Task | Tier | Windsurf guidance |
+|------|------|-------------------|
+| Codebase search, file discovery | fast | Use Cascade Fast / lightweight mode |
+| Shell, git, CI scripts | fast | Use Cascade Fast |
+| Implementation, refactoring | balanced | Default coding model |
+| Tests | balanced | Default coding model |
+| Code review, debugging | balanced-thinking | Standard model; allow reasoning time |
+| Security, architecture | high-thinking | Most capable model available |
+
+### Delegation habits
+
+- Do exploration and search in a **fast** tier before reading entire files
+- Run terminal work without upgrading model unless errors need deep analysis
+- Use **high-thinking** only for security review, architecture, and complex migrations
+- Do not use the most capable model for grep, glob, or formatting tasks
+
+<!-- agent-model-optimizer:end -->

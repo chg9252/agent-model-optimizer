@@ -1,0 +1,38 @@
+---
+description: Model and subagent routing — delegate lightweight work to fast paths
+alwaysApply: true
+---
+
+# Model routing
+
+Match delegation to task type. Do not use `generalPurpose` for simple search or shell work.
+
+## Built-in subagents (prefer these)
+
+| Task | Use | Why |
+|------|-----|-----|
+| File search, codebase map, keyword lookup | `explore` | Product-optimized fast exploration |
+| Terminal, git, npm, CI, scripts | `shell` | Isolated command execution |
+| Bug-focused review (user asks) | `bugbot` | Specialized review |
+| Security review (user asks) | `security-review` | Specialized review |
+| Multi-step implementation needing varied tools | `generalPurpose` | Only when no narrower agent fits |
+
+## Custom project agents (`.cursor/agents/`)
+
+| Task | Agent | Model tier |
+|------|-------|------------|
+| Team exploration rules | `explorer` | fast |
+| Code review before PR / after edits | `reviewer` | balanced-thinking |
+| Write or fix tests | `tester` | balanced |
+| Security audit (if installed) | `security-auditor` | high-thinking |
+| Architecture / migration (if installed) | `architect` | high-thinking |
+| Docs (if installed) | `docs-writer` | fast |
+
+When launching custom agents via Task, pass the `model` from the agent frontmatter.
+
+## Rules
+
+1. Search → `explore` or `explorer`, not `generalPurpose`
+2. Commands → `shell`, not main session
+3. Review → `reviewer` or `bugbot`, not full parent model by default
+4. Reserve premium models for security and architecture work
